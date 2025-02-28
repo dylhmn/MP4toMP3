@@ -24,9 +24,10 @@ namespace mp4to3
         // VARIABLES
         bool drag;
         Point displacement;
+        string mp4path, mp4name, mp3path, mp3name;
 
         //
-        // SECTION 1 - UI
+        // UNIT 1 - UI
         //
         private void lblRibbon_MouseDown(object sender, MouseEventArgs e)
         {
@@ -53,19 +54,45 @@ namespace mp4to3
         {
             drag = false;
         } // Drag release
-
         private void picExit_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         } // Exit button safely closes the program
-
         private void picMin_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
         //
-        // SECTION 2 -
+        // UNIT 2 - FUNCTIONALITY
         //
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, Filter="MP4 File|*.mp4" };
+            // OpenFileDialog prompts users to open a file (One file, with the format MP4)
+            
+            if (ofd.ShowDialog() == DialogResult.OK) // If the user didn't cancel the file selection
+            { 
+                mp4path = ofd.FileName; // Returns the path
+                mp4name = ofd.SafeFileName; // Returns only the file name
+            }
+            txtOpen.Text = mp4path; // Displays path
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd = new FolderBrowserDialog();
+            if (fbd.ShowDialog() == DialogResult.OK) // If the user doesn't cancel...
+            {
+                mp3path = fbd.SelectedPath; // Returns the path
+                mp3name = mp4name.Substring(0,mp4name.Length - 4); // Starting from index 0, and taking away the last 4 (.mp4)
+                mp3path += ("\\" + mp3name + ".mp3"); // Adds to the path with the addition of the file
+            }
+            txtSave.Text = mp3path; // Displays (concatenated) path
+        }
+        private void btnConvert_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
