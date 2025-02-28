@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NReco;
 
 namespace mp4to3
 {
@@ -58,7 +59,9 @@ namespace mp4to3
         {
             Environment.Exit(0);
         } // Exit button safely closes the program
-        private void picMin_Click(object sender, EventArgs e)
+
+
+            private void picMin_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
@@ -91,8 +94,9 @@ namespace mp4to3
         }
         private void btnConvert_Click(object sender, EventArgs e)
         {
-
+            // NuGet Package Manager >> NReco.VideoConverter (This is a library depedency)
+            var convert = new NReco.VideoConverter.FFMpegConverter(); // Library reference
+            convert.ConvertMedia(txtOpen.Text.Trim(), txtSave.Text.Trim(), "mp3");
         }
-
     }
-}
+} 

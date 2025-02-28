@@ -8,3 +8,6 @@ C:\Users\44750\Downloads\mp4to3\obj\Debug\mp4to3.csproj.CoreCompileInputs.cache
 C:\Users\44750\Downloads\mp4to3\obj\Debug\mp4to3.exe
 C:\Users\44750\Downloads\mp4to3\obj\Debug\mp4to3.pdb
 C:\Users\44750\Downloads\mp4to3\obj\Debug\mp4to3.frmConvert.resources
+C:\Users\44750\Downloads\mp4to3\bin\Debug\NReco.VideoConverter.dll
+C:\Users\44750\Downloads\mp4to3\bin\Debug\NReco.VideoConverter.xml
+C:\Users\44750\Downloads\mp4to3\obj\Debug\mp4to3.csproj.Up2Date
