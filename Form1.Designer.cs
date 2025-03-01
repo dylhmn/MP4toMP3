@@ -38,6 +38,8 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.lblPath = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.lblCount = new System.Windows.Forms.Label();
+            this.lblHandler = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picExit)).BeginInit();
             this.SuspendLayout();
@@ -109,6 +111,7 @@
             this.txtOpen.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOpen.Location = new System.Drawing.Point(12, 94);
             this.txtOpen.Name = "txtOpen";
+            this.txtOpen.ReadOnly = true;
             this.txtOpen.Size = new System.Drawing.Size(390, 30);
             this.txtOpen.TabIndex = 6;
             // 
@@ -117,6 +120,7 @@
             this.txtSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSave.Location = new System.Drawing.Point(12, 177);
             this.txtSave.Name = "txtSave";
+            this.txtSave.ReadOnly = true;
             this.txtSave.Size = new System.Drawing.Size(390, 30);
             this.txtSave.TabIndex = 8;
             // 
@@ -155,6 +159,32 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Save to...";
             // 
+            // lblCount
+            // 
+            this.lblCount.AutoSize = true;
+            this.lblCount.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Bold);
+            this.lblCount.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblCount.Location = new System.Drawing.Point(14, 322);
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(196, 27);
+            this.lblCount.TabIndex = 11;
+            this.lblCount.Text = "Total conversions:";
+            this.lblCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblHandler
+            // 
+            this.lblHandler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lblHandler.AutoSize = true;
+            this.lblHandler.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Bold);
+            this.lblHandler.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblHandler.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblHandler.Location = new System.Drawing.Point(14, 244);
+            this.lblHandler.Name = "lblHandler";
+            this.lblHandler.Size = new System.Drawing.Size(18, 27);
+            this.lblHandler.TabIndex = 12;
+            this.lblHandler.Text = " ";
+            this.lblHandler.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmConvert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -162,6 +192,8 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(18)))), ((int)(((byte)(18)))));
             this.ClientSize = new System.Drawing.Size(584, 361);
             this.ControlBox = false;
+            this.Controls.Add(this.lblHandler);
+            this.Controls.Add(this.lblCount);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblPath);
             this.Controls.Add(this.txtSave);
@@ -194,6 +226,8 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label lblPath;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblCount;
+        private System.Windows.Forms.Label lblHandler;
     }
 }
 

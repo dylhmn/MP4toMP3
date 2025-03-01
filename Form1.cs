@@ -1,13 +1,14 @@
-﻿using System;
+﻿using NReco;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using NReco;
 
 namespace mp4to3
 {
@@ -26,6 +27,8 @@ namespace mp4to3
         bool drag;
         Point displacement;
         string mp4path, mp4name, mp3path, mp3name;
+        bool mp4pathValid, mp3pathValid;
+        int totalConversions = 0;
 
         //
         // UNIT 1 - UI
@@ -61,7 +64,7 @@ namespace mp4to3
         } // Exit button safely closes the program
 
 
-            private void picMin_Click(object sender, EventArgs e)
+        private void picMin_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
@@ -71,13 +74,14 @@ namespace mp4to3
         //
         private void btnOpen_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, Filter="MP4 File|*.mp4" };
+            OpenFileDialog ofd = new OpenFileDialog() { Multiselect = false, Filter = "MP4 File|*.mp4" };
             // OpenFileDialog prompts users to open a file (One file, with the format MP4)
-            
+
             if (ofd.ShowDialog() == DialogResult.OK) // If the user didn't cancel the file selection
-            { 
+            {
                 mp4path = ofd.FileName; // Returns the path
                 mp4name = ofd.SafeFileName; // Returns only the file name
+                mp4pathValid = true;
             }
             txtOpen.Text = mp4path; // Displays path
         }
@@ -87,16 +91,32 @@ namespace mp4to3
             if (fbd.ShowDialog() == DialogResult.OK) // If the user doesn't cancel...
             {
                 mp3path = fbd.SelectedPath; // Returns the path
-                mp3name = mp4name.Substring(0,mp4name.Length - 4); // Starting from index 0, and taking away the last 4 (.mp4)
+                mp3name = mp4name.Substring(0, mp4name.Length - 4); // Starting from index 0, and taking away the last 4 (.mp4)
                 mp3path += ("\\" + mp3name + ".mp3"); // Adds to the path with the addition of the file
+                mp3pathValid = true;
             }
             txtSave.Text = mp3path; // Displays (concatenated) path
         }
         private void btnConvert_Click(object sender, EventArgs e)
         {
-            // NuGet Package Manager >> NReco.VideoConverter (This is a library depedency)
-            var convert = new NReco.VideoConverter.FFMpegConverter(); // Library reference
-            convert.ConvertMedia(txtOpen.Text.Trim(), txtSave.Text.Trim(), "mp3");
+            if (mp4pathValid && mp3pathValid) // Stops spam & crashing
+            {
+                // NuGet Package Manager >> NReco.VideoConverter (This is a library depedency)
+                var convert = new NReco.VideoConverter.FFMpegConverter(); // Library reference
+                convert.ConvertMedia(txtOpen.Text.Trim(), txtSave.Text.Trim(), "mp3");
+
+                mp4pathValid = false;
+                mp3pathValid = false;
+
+                totalConversions++;
+                lblCount.Text = "Total conversions: " + totalConversions.ToString();
+            }
+            else {
+                lblHandler.ForeColor = Color.Red;
+                lblHandler.Text = "Please select an input and file path";
+                
+                lblHandler.Text = "";
+            }
         }
     }
-} 
+}
