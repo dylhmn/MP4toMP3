@@ -105,6 +105,7 @@ namespace mp4to3
                 // NuGet Package Manager >> NReco.VideoConverter (This is a library depedency)
                 var convert = new NReco.VideoConverter.FFMpegConverter(); // Library reference
                 convert.ConvertMedia(txtOpen.Text.Trim(), txtSave.Text.Trim(), "mp3");
+                //Could be lossy (AAC, Opus) / lossless (MP3) compression depending on the video audio format
                 mp4pathValid = false;
                 mp3pathValid = false;
                 btnSave.Visible = false;
