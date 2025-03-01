@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConvert));
             this.lblRibbon = new System.Windows.Forms.Label();
             this.picMin = new System.Windows.Forms.PictureBox();
             this.picExit = new System.Windows.Forms.PictureBox();
@@ -135,6 +136,7 @@
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Visible = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // lblPath
@@ -176,7 +178,7 @@
             this.lblHandler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.lblHandler.AutoSize = true;
             this.lblHandler.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Bold);
-            this.lblHandler.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.lblHandler.ForeColor = System.Drawing.Color.Red;
             this.lblHandler.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblHandler.Location = new System.Drawing.Point(14, 244);
             this.lblHandler.Name = "lblHandler";
@@ -205,6 +207,7 @@
             this.Controls.Add(this.picMin);
             this.Controls.Add(this.lblRibbon);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmConvert";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             ((System.ComponentModel.ISupportInitialize)(this.picMin)).EndInit();

@@ -82,6 +82,7 @@ namespace mp4to3
                 mp4path = ofd.FileName; // Returns the path
                 mp4name = ofd.SafeFileName; // Returns only the file name
                 mp4pathValid = true;
+                btnSave.Visible = true; // A strict order reduces crashing
             }
             txtOpen.Text = mp4path; // Displays path
         }
@@ -97,26 +98,33 @@ namespace mp4to3
             }
             txtSave.Text = mp3path; // Displays (concatenated) path
         }
-        private void btnConvert_Click(object sender, EventArgs e)
+        private async void btnConvert_Click(object sender, EventArgs e)
         {
-            if (mp4pathValid && mp3pathValid) // Stops spam & crashing
+            if (mp4pathValid && mp3pathValid) // Validates both fields are entered
             {
                 // NuGet Package Manager >> NReco.VideoConverter (This is a library depedency)
                 var convert = new NReco.VideoConverter.FFMpegConverter(); // Library reference
                 convert.ConvertMedia(txtOpen.Text.Trim(), txtSave.Text.Trim(), "mp3");
-
                 mp4pathValid = false;
                 mp3pathValid = false;
-
+                btnSave.Visible = false;
                 totalConversions++;
                 lblCount.Text = "Total conversions: " + totalConversions.ToString();
+                txtOpen.Text = "";
+                txtSave.Text = "";
+
             }
-            else {
-                lblHandler.ForeColor = Color.Red;
-                lblHandler.Text = "Please select an input and file path";
-                
-                lblHandler.Text = "";
+            else if (mp4pathValid == true && mp3pathValid == false)
+            {
+                lblHandler.Text = "Please select a save path";
             }
+            else
+            {
+                lblHandler.Text = "Please select a video";
+                // Await marks the method as async. So the main thread isn't disturbed.
+            }
+            await Task.Delay(4000);
+            lblHandler.Text = "";
         }
     }
 }
