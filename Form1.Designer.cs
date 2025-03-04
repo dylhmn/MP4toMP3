@@ -146,9 +146,9 @@
             this.lblPath.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.lblPath.Location = new System.Drawing.Point(12, 62);
             this.lblPath.Name = "lblPath";
-            this.lblPath.Size = new System.Drawing.Size(117, 27);
+            this.lblPath.Size = new System.Drawing.Size(159, 27);
             this.lblPath.TabIndex = 9;
-            this.lblPath.Text = "Video path";
+            this.lblPath.Text = "Select a video...";
             // 
             // label1
             // 

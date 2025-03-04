@@ -113,7 +113,8 @@ namespace mp4to3
                 lblCount.Text = "Total conversions: " + totalConversions.ToString();
                 txtOpen.Text = "";
                 txtSave.Text = "";
-
+                lblHandler.ForeColor = Color.Green;
+                lblHandler.Text = "Success!";
             }
             else if (mp4pathValid == true && mp3pathValid == false)
             {
@@ -126,6 +127,7 @@ namespace mp4to3
             }
             await Task.Delay(4000);
             lblHandler.Text = "";
+            lblHandler.ForeColor = Color.Red; 
         }
     }
 }
